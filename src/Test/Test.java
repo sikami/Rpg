@@ -21,8 +21,8 @@ public class Test {
 
     @org.junit.jupiter.api.Test
     public void testNewCharacterIsAlive() {
-        Characters characters = new Characters("Sam");
-        assertTrue(characters.isAlive());
+        Characters sam = new Characters("Sam");
+        assertTrue(sam.isAlive());
     }
 
     @org.junit.jupiter.api.Test
@@ -45,21 +45,27 @@ public class Test {
     @org.junit.jupiter.api.Test
     public void testCharacterCanHealCharacter() {
         Characters siti = new Characters("Siti");
-        Characters soto = new Characters("Soto");
+        Characters soto = new Characters("Soto", 10);
         soto.isHealedBy(siti);
-        assertEquals(1020, soto.getHealth());
+        assertEquals(30, soto.getHealth());
     }
 
 
     @org.junit.jupiter.api.Test
     public void testDeadCharacterCannotBeHealed() {
-        Characters bluto = new Characters("Bluto");
+        Characters bluto = new Characters("Bluto", 0);
         Characters siti = new Characters("Siti");
-        bluto.setAlive(false);
         bluto.isHealedBy(siti);
         assertEquals(0, bluto.getHealth());
     }
 
+    @org.junit.jupiter.api.Test
+    public void testHealingCannotRaiseHealthAbove1000() {
+        Characters jono = new Characters("Jono");
+        Characters mimin = new Characters("Mimin");
+        jono.isHealedBy(mimin);
+        assertEquals(1000, jono.getHealth());
+    }
 
 
 

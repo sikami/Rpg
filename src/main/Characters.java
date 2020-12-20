@@ -13,6 +13,11 @@ public class Characters {
         this.isAlive = true;
     }
 
+    public Characters(String name, int health) {
+        this.name = name;
+        this.health = health;
+        this.level = 1;
+    }
 
     public int getHealth() {
         return this.health;
@@ -23,16 +28,12 @@ public class Characters {
     }
 
     public boolean isAlive() {
-        if (this.isAlive = false) {
-            this.health = 0;
+        if (this.health == 0) {
+            this.isAlive = false;
+        } else {
+            this.isAlive = true;
         }
         return this.isAlive;
-    }
-
-    public void setAlive(boolean alive) {
-        isAlive = alive;
-
-
     }
 
     public void isAttackedBy(Characters enemy) {
@@ -48,11 +49,14 @@ public class Characters {
     }
 
     public void isHealedBy(Characters siti) {
+        if (this.health == 0) {
 
-        if (!isAlive) {
-            this.health = 0;
+        } else if (this.health == 1000){
+            this.health = 1000;
         } else {
             this.health += 20;
         }
     }
+
+
 }
