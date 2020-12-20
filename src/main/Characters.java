@@ -20,6 +20,13 @@ public class Characters {
         this.level = 1;
     }
 
+    public Characters(String name, int health, int level) {
+        this.name = name;
+        this.health = health;
+        this.level = level;
+    }
+
+
     public int getHealth() {
         return this.health;
     }
@@ -40,19 +47,24 @@ public class Characters {
     public void isAttackedBy(Characters enemy) {
         if (this.equals(enemy)) {
         } else {
-            this.health -= INITIAL_DAMAGE;
-        }
+            if (this.getLevel() >= 5 && this.getLevel() > enemy.getLevel()) {
+                this.health -= INITIAL_DAMAGE/2;
+            } else if (this.getLevel() <= 5 && this.getLevel() < enemy.getLevel()) {
+                this.health -= ((INITIAL_DAMAGE/2) + INITIAL_DAMAGE);
+            } else {
+                this.health -= INITIAL_DAMAGE;
+            }
 
-        if (this.health <= 0) {
-            this.health = 0;
-            isAlive = false;
-        }
+            if (this.health <= 0) {
+                this.health = 0;
+                isAlive = false;
+            }
 
-        if (INITIAL_DAMAGE >= this.health) {
-            this.health = 0;
-            isAlive = false;
+            if (INITIAL_DAMAGE >= this.health) {
+                this.health = 0;
+                isAlive = false;
+            }
         }
-
     }
 
     public void isHealedBy(Characters siti) {
@@ -63,6 +75,8 @@ public class Characters {
             this.health += 20;
         }
     }
+
+
 
 
 }

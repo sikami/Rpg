@@ -76,6 +76,29 @@ public class Test {
         assertEquals(100, obiwan.getHealth());
     }
 
+    @org.junit.jupiter.api.Test
+    public void testCharacterCanHealSelf() {
+        Characters soto = new Characters("Soto", 20);
+        soto.isHealedBy(soto);
+        assertEquals(40, soto.getHealth());
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testAttackByLowerLevelEnemy() {
+        Characters bluto = new Characters("Bluto", 200, 5);
+        Characters soto = new Characters("Soto", 300, 2);
+        bluto.isAttackedBy(soto);
+        assertEquals(190, bluto.getHealth());
+
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testAttackByHigherLevelEnemy() {
+        Characters bluto = new Characters("Bluto", 200, 4);
+        Characters soto = new Characters("Soto", 150, 7);
+        bluto.isAttackedBy(soto);
+        assertEquals(170, bluto.getHealth());
+    }
 
 
 
