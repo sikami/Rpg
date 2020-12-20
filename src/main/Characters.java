@@ -25,4 +25,17 @@ public class Characters {
     public boolean isAlive() {
         return this.isAlive;
     }
+
+    public void isAttackedBy(Characters enemy) {
+        this.health -= 20;
+    }
+
+
+    public void isAttackedBy(Characters enemy, int damage) {
+        if (damage >= this.health) {
+            this.health = 0;
+            isAlive = false;
+        }
+    }
+
 }
