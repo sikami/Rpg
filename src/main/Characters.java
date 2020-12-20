@@ -5,6 +5,7 @@ public class Characters {
     private int health;
     private int level;
     private boolean isAlive;
+    private final int INITIAL_DAMAGE = 20;
 
     public Characters(String name) {
         this.name = name;
@@ -37,20 +38,25 @@ public class Characters {
     }
 
     public void isAttackedBy(Characters enemy) {
-        this.health -= 20;
-    }
+        if (this.equals(enemy)) {
+        } else {
+            this.health -= INITIAL_DAMAGE;
+        }
 
-
-    public void isAttackedBy(Characters enemy, int damage) {
-        if (damage >= this.health) {
+        if (this.health <= 0) {
             this.health = 0;
             isAlive = false;
         }
+
+        if (INITIAL_DAMAGE >= this.health) {
+            this.health = 0;
+            isAlive = false;
+        }
+
     }
 
     public void isHealedBy(Characters siti) {
         if (this.health == 0) {
-
         } else if (this.health == 1000){
             this.health = 1000;
         } else {

@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class Test {
 
+    //iteration one
     @org.junit.jupiter.api.Test
     public void testCharacterHealthStarts1000() {
         Characters characters = new Characters("Frodo");
@@ -37,8 +38,8 @@ public class Test {
     @org.junit.jupiter.api.Test
     public void testCharacterDeadWhenAttackExceedsCurrentHealth() {
         Characters bluto = new Characters("Bluto");
-        Characters soto = new Characters("Soto");
-        soto.isAttackedBy(bluto, 2000);
+        Characters soto = new Characters("Soto", 15);
+        soto.isAttackedBy(bluto);
         assertFalse(soto.isAlive());
     }
 
@@ -65,6 +66,14 @@ public class Test {
         Characters mimin = new Characters("Mimin");
         jono.isHealedBy(mimin);
         assertEquals(1000, jono.getHealth());
+    }
+
+    //iteration two
+    @org.junit.jupiter.api.Test
+    public void testCharacterCannotSelfDamage() {
+        Characters obiwan = new Characters("Obi Wan Kenobi", 100);
+        obiwan.isAttackedBy(obiwan);
+        assertEquals(100, obiwan.getHealth());
     }
 
 
