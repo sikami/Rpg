@@ -23,7 +23,16 @@ public class Characters {
     }
 
     public boolean isAlive() {
+        if (this.isAlive = false) {
+            this.health = 0;
+        }
         return this.isAlive;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
+
+
     }
 
     public void isAttackedBy(Characters enemy) {
@@ -38,4 +47,12 @@ public class Characters {
         }
     }
 
+    public void isHealedBy(Characters siti) {
+
+        if (!isAlive) {
+            this.health = 0;
+        } else {
+            this.health += 20;
+        }
+    }
 }

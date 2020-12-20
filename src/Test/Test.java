@@ -46,6 +46,18 @@ public class Test {
     public void testCharacterCanHealCharacter() {
         Characters siti = new Characters("Siti");
         Characters soto = new Characters("Soto");
+        soto.isHealedBy(siti);
+        assertEquals(1020, soto.getHealth());
+    }
+
+
+    @org.junit.jupiter.api.Test
+    public void testDeadCharacterCannotBeHealed() {
+        Characters bluto = new Characters("Bluto");
+        Characters siti = new Characters("Siti");
+        bluto.setAlive(false);
+        bluto.isHealedBy(siti);
+        assertEquals(0, bluto.getHealth());
     }
 
 
